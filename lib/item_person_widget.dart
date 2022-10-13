@@ -6,8 +6,10 @@ import 'package:flutter/material.dart';
 class ItemPersomWidget extends StatelessWidget {
   //Map<String, dynamic> data;
   UserModel data;
+  Function myFunction;
   ItemPersomWidget({
     required this.data,
+    required this.myFunction,
   });
 
   final List<Color> _colors = [
@@ -22,7 +24,6 @@ class ItemPersomWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     int index = Random().nextInt(_colors.length);
     return Card(
       color: Colors.white,
@@ -44,6 +45,15 @@ class ItemPersomWidget extends StatelessWidget {
           data.name,
         ),
         subtitle: Text("Teléfono: ${data.phone} - Rol: ${data.rol}"),
+        trailing: IconButton(
+          onPressed: () {
+            myFunction();
+          },
+          icon: Icon(
+            Icons.delete,
+            color: Colors.redAccent,
+          ),
+        ),
       ),
     );
   }
